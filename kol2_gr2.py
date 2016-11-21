@@ -15,11 +15,23 @@
 # data in text files (YAML, JSON).
 # If you have even more courage, try implementing user interface.
 
-from diary import Diary 
+from student import Student
 
 
 def main():
-	pass
+	
+	student1 = Student("Adam", "Nowak")
+	student2 = Student(555, 888)
+	
+	print student1, student2
+	
+	student1.add_grades("UNIX", [4,5])
+	student1.add_grades("UNIX", [])
+	student1.add_grades("UNIX", [5])
+	student1.add_grades("Java", [])
+	
+	print student1.grades, student1.get_averages()
+	
 
-if __name__ == "__main__":
+if __name__ == "__main__": 
 	main()
