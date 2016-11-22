@@ -1,37 +1,34 @@
-#
-# Class diary  
-#
-# Create program for handling lesson scores.
-# Use python to handle student (highscool) class scores, and attendance.
-# Make it possible to:
-# - Get students total average score (average across classes)
-# - get students average score in class
-# - hold students name and surname
-# - Count total attendance of student
-# The default interface for interaction should be python interpreter.
-# Please, use your imagination and create more functionalities. 
-# Your project should be able to handle entire school.
-# If you have enough courage and time, try storing (reading/writing) 
-# data in text files (YAML, JSON).
-# If you have even more courage, try implementing user interface.
+#!/usr/bin/python
+
 
 from student import Student
+from group import Group
 
 
 def main():
 	
 	student1 = Student("Adam", "Nowak")
 	student2 = Student(555, 888)
-	
-	print student1, student2
-	
+
 	student1.add_grades("UNIX", [4,5])
 	student1.add_grades("UNIX", [])
 	student1.add_grades("UNIX", [5])
 	student1.add_grades("Java", [])
+	student1.add_grades("Java", [4,5,5,5])
+	student1.add_grades("Java", [3])
+	student1.add_grades("Java", [])
+	student1.add_grades("Java", [4])
 	
-	print student1.grades, student1.get_averages()
+	print "Student's 1 partial grades:", student1.grades
+	print "Student's 1 averages for each subject:", student1.get_averages()
+	print "Student's 1 final average:", student1.get_total_average()
 	
-
+	group = Group()
+	
+	group.add_student(student1)
+	group.add_student(student2)
+	
+	group.export_students("my_group.json")
+	
 if __name__ == "__main__": 
 	main()
